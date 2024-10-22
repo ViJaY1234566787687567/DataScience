@@ -2,7 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-# Load the dataset (replace 'your_dataset.csv' with your dataset file)
+# Load the dataset
 df = pd.read_csv('Titanic-Dataset.csv')
 
 # Display the first few rows of the dataset
@@ -11,27 +11,31 @@ print(df.head())
 
 # Basic statistics of the dataset
 print("\nBasic statistics:")
-print(df.describe())
+print(df.describe(include='all'))  # include='all' to get stats for categorical columns
 
 # Check for missing values
 print("\nMissing values in the dataset:")
 print(df.isnull().sum())
 
+# Handling missing values (example: fill missing 'Age' with mean)
+df['Age'] = df['Age'].fillna(df['Age'].mean())  # Updated this line
+
 # Data visualization
-# Set the style of seaborn
 sns.set(style="whitegrid")
 
-# Create a histogram of a specific column (replace 'column_name' with an actual column)
+# Create a histogram of 'Age'
 plt.figure(figsize=(10, 6))
-sns.histplot(df['column_name'], bins=30, kde=True)
-plt.title('Distribution of Column Name')
-plt.xlabel('Column Name')
+sns.histplot(df['Age'], bins=30, kde=True)
+plt.title('Distribution of Age')
+plt.xlabel('Age')
 plt.ylabel('Frequency')
 plt.show()
 
 # Create a correlation heatmap
 plt.figure(figsize=(12, 8))
-correlation_matrix = df.corr()
+# Select only numeric columns for correlation
+numeric_df = df.select_dtypes(include='number')
+correlation_matrix = numeric_df.corr()  # Updated to use numeric_df
 sns.heatmap(correlation_matrix, annot=True, fmt='.2f', cmap='coolwarm')
 plt.title('Correlation Heatmap')
 plt.show()
