@@ -25,3 +25,8 @@ Make sure you have Python installed on your machine. You will also need to insta
    ```bash
    git clone https://github.com/your_username/data-analysis-project.git
    cd data-analysis-project
+![Screenshot 2024-10-22 160940](https://github.com/user-attachments/assets/47fb97da-1eec-4aed-999f-2cd15fa42976)
+
+![Screenshot 2024-10-22 161013](https://github.com/user-attachments/assets/56ee348e-3f96-45ae-abde-99e16be4cb96)
+
+
